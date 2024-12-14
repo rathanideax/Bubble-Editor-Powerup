@@ -7,16 +7,12 @@
    "128": "Codeless Love 128px.png"
  },
   "version": "1.0",
-  "description": "Inject custom CSS into Bubble.io pages with 'id=' in the URL.",
+  "description": "Inject custom CSS into Bubble.io editor page",
   "permissions": ["scripting"],
-  "host_permissions": ["https://bubble.io/page*"],
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
       "matches": ["https://bubble.io/page*"],
-      "js": ["content.js"]
+      "css": ["style.css"]
     }
   ],
   "web_accessible_resources": [

@@ -1,25 +1,30 @@
-.codelesslove, {
-  border-right: 1px solid transparent; /* Placeholder for border */
-  border-image: linear-gradient(to bottom, #C8FDFE 33%, #0000E5 33%, #0000E5 66%, #FF0000 66%) 1;
-}
-
-❤️ codelesslove, .option-set-values > .field {
+/* ❤️ */
+/* Data > Option sets - make Display inputs as wide as they can be */
+/* Set the container grid */
+❤️ codelesslove,
+#mainwindow .option-set-values > .field {
     display: grid;
     grid-template-columns: 1fr auto auto auto auto auto;
     gap: 0px;
-    border-right: 1px solid transparent; /* Placeholder for border */
-    border-image: linear-gradient(to bottom, #C8FDFE 33%, #0000E5 33%, #0000E5 66%, #FF0000 66%) 1;
-    border-image: linear-gradient(to bottom,
-      #FFFFFF 20%,
-      #C8FDFE 20%, #C8FDFE 40%,
-      #0000E5 40%, #0000E5 60%,
-      #FF0000 60%, #FF0000 80%,
-      #FFFFFF 80%) 1
 }
-❤️ codelesslove, .option-set-values > .field .composer-textbox {
-  position: relative;
+/* Expand the input and it's container */
+❤️ codelesslove,
+#mainwindow .option-set-values > .field .composer-textbox,
+#mainwindow .option-set-values > .field .composer-textbox > input {
+  width: 100% !important;
 }
-❤️ codelesslove, .option-set-values > .field .composer-textbox::after {
+/* Trash can and icon are switched when grid template is used, put them back in the correct order.  */
+❤️ codelesslove,
+#mainwindow .custom-fields > .field .delete-btn {
+  order: 2;
+}
+/* Heart indicator on the right-edge of the input */
+❤️ codelesslove,
+#mainwindow .option-set-values > .field .composer-textbox {
+  position: relative;/* give the ::after pseudoelement something to be relative to */
+}
+❤️ codelesslove,
+#mainwindow .option-set-values > .field .composer-textbox::after {
     content: "❤️";
     font-size: 5px;
     margin-left: 0px;
@@ -31,31 +36,60 @@
     width: 0;
     height: 0;
 }
-
+/* ❤️ */
+/* Data > Option sets - make the "move up" and "move down" gaps not collapse */
 ❤️ codelesslove,
-.option-set-values > .field .composer-textbox,
-.option-set-values > .field .composer-textbox > input {
-  width: 100% !important;
+#mainwindow .custom-fields > .field:first-child .modify-attr-btn:nth-child(2)::after {
+    content: "move up";
+    margin-left: 8px;
+    opacity: 0;
+}
+❤️ codelesslove,
+#mainwindow .custom-fields > .field:last-child .modify-attr-btn:nth-child(3)::after {
+    content: "move down";
+    margin-left: 8px;
+    opacity: 0;
+}
+/* Heart indicators where gaps are */
+❤️ codelesslove,
+#mainwindow .custom-fields > .field:first-child .modify-attr-btn:nth-child(3)::before {
+    content: "❤️";
+    width: 0;
+    left: -39px;
+    display: inline-block;
+    position: relative;
+    font-size: 5px;
+    top: -2px;
+}
+❤️ codelesslove,
+#mainwindow .custom-fields > .field:last-child .modify-attr-btn:nth-child(3)::before {
+  content: "❤️";
+  width: 0;
+  right: -102px;
+  display: inline-block;
+  position: relative;
+  font-size: 5px;
+  top: -2px;
 }
 
-
+/* ❤️ */
+/* Design - Make the design canvas left align. */
 ❤️ codelesslove,
-.canvas.resp-v1 > .canvas-inner,
-.designcanvas > .canvas-inner {
+#mainwindow .canvas.resp-v1 > .canvas-inner,
+#mainwindow .designcanvas > .canvas-inner {
     justify-self: left !important;
     margin-left: 40px;
 }
-
+/* Heart indicator on the right-hand side */
 ❤️ codelesslove,
-.tabcanvas.tabs-1 .canvas.resp-v1,
-.tabcanvas.tabs-1 .designcanvas.resp-v1 {
+#mainwindow .tabcanvas.tabs-1 .canvas.resp-v1,
+#mainwindow .tabcanvas.tabs-1 .designcanvas.resp-v1 {
   grid-template-areas: "content after";
   grid-template-columns: max-content 1fr;
 }
-  ❤️ codelesslove,
 ❤️ codelesslove,
-.canvas.resp-v1::after,
-.designcanvas::after {
+#mainwindow .canvas.resp-v1::after,
+#mainwindow .designcanvas::after {
     content: "❤️";
     grid-area: after;
     font-size: 10px;
@@ -66,4 +100,31 @@
     margin-left: -5px;
     position: relative;
     top: calc(50vh - 84px); /* half of the screen plus the top bar and the top padding*/
+}
+
+/* Make expressions indented */
+.property-editor-2 .viewport .condition {
+  clear: both;
+  width: 100%;/* be at least 100% when there isn't enough content*/
+}
+.property-editor-2 .viewport .condition .composer.composer.composer.composer {
+  width: 100%;/* expand to full width */
+}
+.property-editor-2 .viewport .condition .nested {
+  display: block;
+}
+
+.property-editor-2 .viewport .condition .nested .nested .nested {
+    margin-left: 1em;
+}
+.property-editor-2 .viewport .condition .parens.parens-transparent {
+  opacity: 1;
+}
+/* Heart indicator in opening parens (which is usually hidden and is on its own line) */
+.property-editor-2 .viewport .condition .parens.parens-transparent::after {
+  content: "❤️";
+  width: 0;
+  display: inline-block;
+  position: relative;
+  font-size: 5px;\
 }
