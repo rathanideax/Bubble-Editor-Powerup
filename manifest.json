@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Bubble Page CSS Injector",
+  "icons": {
+   "21": "Codeless Love 21px.png",
+   "64": "Codeless Love 64px.png",
+   "128": "Codeless Love 128px.png"
+ },
+  "version": "1.0",
+  "description": "Inject custom CSS into Bubble.io pages with 'id=' in the URL.",
+  "permissions": ["scripting"],
+  "host_permissions": ["https://bubble.io/page*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://bubble.io/page*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["style.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
