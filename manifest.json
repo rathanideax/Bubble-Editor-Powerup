@@ -6,7 +6,7 @@
    "64": "Codeless Love 64px.png",
    "128": "Codeless Love 128px.png"
  },
-  "version": "1.0",
+  "version": "1.1",
   "description": "Improve the Bubble.io editor.",
   "content_scripts": [
     {
