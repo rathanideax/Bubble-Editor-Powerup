@@ -9,7 +9,7 @@ free to use and maintained by the Bubble community! You can contribute by:
 
 See the sections below for more information on how to contribute.
 
-This extension is available to install from the [url=https://chromewebstore.google.com/detail/codeless-love-bubble-edit/imaakngdpjbnlgajekmhpiigibmgmial]Chrome Web Store[/url] or you may install it to your browser directly using instructions below.
+This extension is available to install from the [Chrome Web Store](https://chromewebstore.google.com/detail/codeless-love-bubble-edit/imaakngdpjbnlgajekmhpiigibmgmial) or you may install it to your browser directly using instructions [below](#how-to-install-from-source).
 
 ## Features
 ### Expression Bad Practice Warnings
