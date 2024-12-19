@@ -1,0 +1,29 @@
+/* ❤️ */
+/* Design - Make the design canvas left align. */
+❤️ codelesslove,
+#mainwindow .canvas.resp-v1 > .canvas-inner,
+#mainwindow .designcanvas > .canvas-inner {
+    justify-self: left !important;
+    margin-left: 40px;
+}
+/* Heart indicator on the right-hand side */
+❤️ codelesslove,
+#mainwindow .tabcanvas.tabs-1 .canvas.resp-v1,
+#mainwindow .tabcanvas.tabs-1 .designcanvas.resp-v1 {
+  grid-template-areas: "content after";
+  grid-template-columns: max-content 1fr;
+}
+❤️ codelesslove,
+#mainwindow .canvas.resp-v1::after,
+#mainwindow .designcanvas::after {
+    content: "❤️";
+    grid-area: after;
+    font-size: 10px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-right: -5px;
+    margin-left: -5px;
+    position: relative;
+    top: calc(50vh - 84px); /* half of the screen plus the top bar and the top padding*/
+}

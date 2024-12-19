@@ -11,13 +11,19 @@
   "content_scripts": [
     {
       "matches": ["https://bubble.io/page*"],
-      "css": ["style.css"]
+      "css": [
+        "workflow-editor-folder-pop.css",
+        "property-editor-expression-composer-hitboxes.css",
+        "property-editor-expression-composer-newlines.css",
+        "canvas-left-align-canvas.css",
+        "data-optionsets-expand-inputs.css",
+        "data-optionsets-move-gaps.css",
+        "expression-bad-practice-warning.css"
+      ],
+      "js": ["expression-bad-practice-warning.js"]
+
     }
   ],
-  "web_accessible_resources": [
-    {
-      "resources": ["style.css"],
-      "matches": ["<all_urls>"]
-    }
-  ]
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["https://bubble.io/*"]
 }
