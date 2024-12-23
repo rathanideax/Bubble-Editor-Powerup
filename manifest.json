@@ -24,6 +24,5 @@
 
     }
   ],
-  "permissions": ["scripting"],
   "host_permissions": ["https://bubble.io/*"]
 }
