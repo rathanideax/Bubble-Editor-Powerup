@@ -1,7 +1,11 @@
 /* ❤️ */
 /* Workflow Editor > Sidebar */
 
-/* In the Workflow editor, make the folders have a darker grey, to distinguish from non-folders */
+/* In the Workflow editor, make the folder text bold and background have a darker grey, to distinguish from non-folders */
+❤️ codelesslove,
+._13jwfz73 {
+  font-weight: bold;/* thanks Farouk Zemmouri */
+}
 ❤️ codelesslove,
 #mainwindow .action-editor [data-name=workflowList] div[data-name=FolderItem] {
   background-color: rgb(241 241 241 / 40%);
