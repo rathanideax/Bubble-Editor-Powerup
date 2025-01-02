@@ -1,0 +1,23 @@
+/* ❤️ */
+/* Styles > Style Variables */
+/* Show a background color on rows when hovered, to aid in seeing which var
+   you're modifying */
+❤️ codelesslove,
+.token-wrapper:hover {
+    background-color: #f0f0f0;
+    margin-top: -4px;
+    padding-top: 4px;
+    margin-bottom: 6px !important;
+    padding-bottom: 4px;
+    position: relative;
+}
+
+/* place heart indicator on top-left of hovered row */
+.token-wrapper:hover::after {
+    content: "❤️";
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 0;
+    font-size: 5px;
+}

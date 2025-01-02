@@ -18,7 +18,8 @@
         "canvas-left-align-canvas.css",
         "data-optionsets-expand-inputs.css",
         "data-optionsets-move-gaps.css",
-        "expression-bad-practice-warning.css"
+        "expression-bad-practice-warning.css",
+        "style-row-hover.css"
       ],
       "js": ["expression-bad-practice-warning.js"]
 

@@ -14,6 +14,10 @@ This extension is available to install from the [Chrome Web Store](https://chrom
 ## Features
 https://www.loom.com/share/9a836dc9bbfb4fb7ac7c6d919732fd90?sid=36020ef4-1d8a-455a-bbe3-7ed90bfa2943
 
+### Styles
+#### Style row hover
+When hovering a color or font variable, a background color appears, making it easier to see which row is being modified. 
+
 ### Expression Bad Practice Warnings
 https://www.loom.com/share/f77b2c135f7f4337b03605658ad50d76?sid=15f6473d-8cfb-4712-9a23-7c5eacdf8e8e
 
