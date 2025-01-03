@@ -14,7 +14,8 @@
       "css": [
         "workflow-editor-folder-pop.css",
         "property-editor-expression-composer-hitboxes.css",
-        "property-editor-expression-composer-newlines.css",
+        "property-editor-expression-composer-multiline.css",
+        "property-editor-expression-composers-full-width.css",
         "canvas-left-align-canvas.css",
         "data-optionsets-expand-inputs.css",
         "data-optionsets-move-gaps.css",
