@@ -58,12 +58,12 @@ detectBadPractices();
 // Insert collapser when .nested element is added
 function insertCollapser(element) {
   // Ensure it's not already present
-  if (element && !element.querySelector('.collapser')) {
+  if (element && !element.querySelector('.❤️collapser')) {
     const nestedAncestors = element.closestAll('.nested');  // Custom helper function to get all ancestors with '.nested'
     console.log(nestedAncestors);
     if (nestedAncestors.length >= 2) {//dont show the first one
       const collapser = document.createElement('div');
-      collapser.className = 'collapser';
+      collapser.className = '❤️collapser';
       collapser.textContent = '⏷'; // Icon to represent collapse/expand
       element.insertBefore(collapser, element.firstChild);
 
@@ -71,10 +71,10 @@ function insertCollapser(element) {
       collapser.addEventListener('click', function() {
         const parent = element.closest('.nested');
         if (parent) {
-          parent.classList.toggle('collapsed');
+          parent.classList.toggle('❤️collapsed');
         }
         // Toggle the arrow icon between down and sideways
-        if (parent.classList.contains('collapsed')) {
+        if (parent.classList.contains('❤️collapsed')) {
           collapser.textContent = '⏵'; // Sideways arrow
         } else {
           collapser.textContent = '⏷'; // Down arrow
@@ -93,17 +93,16 @@ const observer = new MutationObserver((mutations) => {
     mutation.addedNodes.forEach((node) => {
       // Check if the node is an element node (not text or comment node)
       if (node.nodeType === Node.ELEMENT_NODE) {
-        // // Check if the node's class list contains a class with ❤️
-        // if (Array.from(node.classList).some(className => className.includes('❤️'))) {
-        //   // If a class with ❤️ is found, don't trigger bad practice detection
-        //   debugger;
-        //   return;
-        // }
+        // Check if the node's class list contains a class with ❤️
+        if (Array.from(node.classList).some(className => className.includes('❤️'))) {
+          // If a class with ❤️ is found, it is something we just inserted. If we insert again, it will cause an infinite loop.
+          return;
+        }
 
-console.log(node);
         // Because: .nested is not mutated directly, but .long-text-composer-wrapper is, so we have to catch that mutating and then get .nested out of it.
         // When exiting expression editor focus, only the <div style=display:inline> element is mutated, so we get it this way to re-draw the triangles.
-        if (node.matches('.long-text-composer-wrapper') || node.matches('.expression-composer > div:first-child')) {
+        // In element condition expressions, it's .expression-composer that mutates
+        if (node.matches('.long-text-composer-wrapper') || node.matches('.expression-composer > div:first-child') || node.matches('.expression-composer')) {
           // Look for .nested inside this node
           const nestedElements = node.querySelectorAll('.nested');
           nestedElements.forEach(nested => {

@@ -18,7 +18,7 @@
 ❤️ codelesslove,
 .property-editor-2 .viewport .expression-composer .nested.dynamic + .dynamic,
 .property-editor-2 .viewport .expression-composer .nested .parens.dynamic,
-.property-editor-2 .viewport .expression-composer .collapsed .nested + .dynamic {
+.property-editor-2 .viewport .expression-composer .❤️collapsed .nested + .dynamic {
     margin-left: 0;/* undo indentation meant only for AND and OR on their own line*/
 }
 ❤️ codelesslove,
@@ -32,47 +32,47 @@
 }
 /* color when parens are hovered */
 ❤️ codelesslove,
-.property-editor-2 .viewport .expression-composer .nested .collapser:hover,
-.property-editor-2 .viewport .expression-composer.hover_fade_out:hover .hovering .collapser:hover,
-.property-editor-2 .viewport .expression-composer .nested .collapser:hover ~ .parens-left,
-.property-editor-2 .viewport .expression-composer .nested .collapser:hover ~ .parens-right {
+.property-editor-2 .viewport .expression-composer .nested .❤️collapser:hover,
+.property-editor-2 .viewport .expression-composer.hover_fade_out:hover .hovering .❤️collapser:hover,
+.property-editor-2 .viewport .expression-composer .nested .❤️collapser:hover ~ .parens-left,
+.property-editor-2 .viewport .expression-composer .nested .❤️collapser:hover ~ .parens-right {
   color: rgb(204, 229, 255);
 }
 
 /* Collapsing: show collapse icon triangles */
 ❤️ codelesslove,
-.property-editor-2 .viewport .expression-composer .nested .collapser {
+.property-editor-2 .viewport .expression-composer .nested .❤️collapser {
   display: inline-block;
   color: #67b3ff;
 }
 /* Collapsing: when collapsing, make content all in one line and clip the overflow */
 ❤️ codelesslove,
-.property-editor-2 .viewport .expression-composer .nested.collapsed {
+.property-editor-2 .viewport .expression-composer .nested.❤️collapsed {
     white-space: nowrap;
     width: calc(100% - 12px);
     overflow: hidden;
     text-overflow: clip;
 }
 ❤️ codelesslove,
-.property-editor-2 .viewport .expression-composer .nested.collapsed div {
+.property-editor-2 .viewport .expression-composer .nested.❤️collapsed div {
   display: inline;
 }
 ❤️ codelesslove,
-.property-editor-2 .viewport .expression-composer .nested.collapsed div .collapser {
+.property-editor-2 .viewport .expression-composer .nested.❤️collapsed div .❤️collapser {
   display: none;/* don't show the icons when collapsed */
 }
 ❤️ codelesslove,
-.property-editor-2 .viewport .expression-composer .nested.collapsed .nested {
+.property-editor-2 .viewport .expression-composer .nested.❤️collapsed .nested {
   margin-left: 0; /* undo the gap meant for multi-line */
 }
 /* Paren color when parent is hovered */
 ❤️ codelesslove,
-.property-editor-2 .viewport .expression-composer.hover_fade_out:hover .hovering .collapser {
+.property-editor-2 .viewport .expression-composer.hover_fade_out:hover .hovering .❤️collapser {
     color: #fab515;
     color: rgba(250, 181, 21, 1);
 }
 /* Paren color when child is hovered */
 ❤️ codelesslove,
-.property-editor-2 .viewport .expression-composer.hover_fade_out:hover .collapser {
+.property-editor-2 .viewport .expression-composer.hover_fade_out:hover .❤️collapser {
     color: rgba(250, 181, 21, 0.6);
 }
