@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Bubble Editor Powerup Options</title>
+  <style>
+    label {
+      display: inline-block;
+      font-size: 1.2em;
+      margin-bottom: 12px;
+      padding-left: 6px;
+    }
+
+    #status {
+      font-size: 1.2em;
+      color: green;
+      margin-bottom: 12px;
+    }
+
+    #save-button {
+        padding: 10px 30px;
+    }
+  </style>
+  <script src="options.js" defer></script>
+</head>
+<body>
+  <h1>Bubble Editor Powerup Options</h1>
+
+  <h3>Please select the features that you want to enable:</h3>
+
+  <label>
+    <input type="checkbox" id="opt-expression-bad-practice-warning" />
+    Expression Bad Practice Warning
+  </label>
+  <br />
+
+  <label>
+    <input type="checkbox" id="opt-style-row-hover" />
+    Style Row Hover
+  </label>
+  <br />
+
+  <div id="status"></div>
+
+  <button id="save-button">Save</button>
+</body>
+</html>
