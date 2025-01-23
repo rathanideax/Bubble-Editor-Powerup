@@ -7,7 +7,35 @@ const featuresConfig = [
     },
     {
       key: "feature_style_row_hover_enabled",
-      cssFile: "features/style-row-hover/style-row-hover.css"
+      cssFile: "features/feature_style_row_hover_enabled/style-row-hover.css"
+    },
+    {
+      key: "feature_canvas_left_align_canvas",
+      cssFile: "features/canvas-left-align-canvas/canvas-left-align-canvas.css"
+    },
+    {
+      key: "feature_data_optionsets_expand_inputs",
+      cssFile: "features/data-optionsets-expand-inputs/data-optionsets-expand-inputs.css"
+    },
+    {
+      key: "feature_data_optionsets_move_gaps",
+      cssFile: "features/data-optionsets-move-gaps/data-optionsets-move-gaps.css"
+    },
+    {
+      key: "feature_property_editor_expression_composer_hitboxes",
+      cssFile: "features/property-editor-expression-composer-hitboxes/property-editor-expression-composer-hitboxes.css"
+    },
+    {
+      key: "feature_property_editor_expression_composer_multiline",
+      cssFile: "features/property-editor-expression-composer-multiline/property-editor-expression-composer-multiline.css"
+    },
+    {
+      key: "feature_property_editor_expression_composers_full_width",
+      cssFile: "features/property-editor-expression-composers-full-width/property-editor-expression-composers-full-width.css"
+    },
+    {
+      key: "feature_workflow_editor_folder_pop",
+      cssFile: "features/workflow-editor-folder-pop/workflow-editor-folder-pop.css"
     }
   ];
 
