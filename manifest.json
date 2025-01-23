@@ -1,30 +1,30 @@
 {
   "manifest_version": 3,
   "name": "Codeless Love Bubble Editor Powerup",
-  "icons": {
-   "21": "Codeless Love 21px.png",
-   "64": "Codeless Love 64px.png",
-   "128": "Codeless Love 128px.png"
- },
-  "version": "1.2",
-  "description": "Improve the Bubble.io editor.",
-  "content_scripts": [
-    {
-      "matches": ["https://bubble.io/page*"],
-      "css": [
-        "workflow-editor-folder-pop.css",
-        "property-editor-expression-composer-hitboxes.css",
-        "property-editor-expression-composer-multiline.css",
-        "property-editor-expression-composers-full-width.css",
-        "canvas-left-align-canvas.css",
-        "data-optionsets-expand-inputs.css",
-        "data-optionsets-move-gaps.css",
-        "expression-bad-practice-warning.css",
-        "style-row-hover.css"
-      ],
-      "js": ["expression-bad-practice-warning.js"]
-
-    }
+  "version": "2.0",
+  "description": "Enhances the Bubble.io Editor with toggleable features",
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_popup": "options.html",
+    "default_title": "Codeless Love Bubble Editor Powerup"
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs"
   ],
-  "host_permissions": ["https://bubble.io/*"]
+  "host_permissions": [
+    "https://bubble.io/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "21": "extension-icons/icon-21.png",
+    "64": "extension-icons/icon-64.png",
+    "128": "extension-icons/icon-128.png"
+  }
 }

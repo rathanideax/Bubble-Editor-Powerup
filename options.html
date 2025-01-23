@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Bubble Editor Powerup Options</title>
+  <style>
+    :root {
+      --close-button-width: 40px;
+      --base-padding: 10px;
+    }
+    body {
+      width: 450px;
+      margin: var(--base-padding);
+      padding: 0 var(--base-padding) var(--base-padding) var(--base-padding);
+      position: relative;
+      background-color: transparent;
+    }
+    body.full-page {
+        margin: auto;
+        border: solid 1px #ccc;
+        border-radius: var(--base-padding);
+        var(--base-padding) var(--base-padding) calc(var(--base-padding)*3) -var(--base-padding) #000000DD;
+        margin-top: calc(var(--base-padding)*2);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    button {
+        padding: var(--base-padding) calc(var(--base-padding) * 2);
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: var(--base-padding);
+    }
+    .space-between {
+      justify-content: space-between;
+    }
+    .justify-center {
+      justify-content: center;
+    }
+    .space-for-close-button {
+       padding-right: calc(var(--close-button-width) + var(--base-padding) + var(--base-padding))
+     }
+    .logo {
+      height: 40px;
+      width: 40px;
+    }
+    .button-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: none;
+      border: none;
+      font-size: 2em;
+      padding: var(--base-padding);
+      margin: 0;
+      border-radius: var(--close-button-width);
+      line-height: 0;
+      width: var(--close-button-width);
+      height: var(--close-button-width);
+    }
+    .top-margin {
+      margin-top: calc(var(--base-padding)*2);
+    }
+    .button-close:hover {
+      background: #ccc;
+    }
+    .button-secondary {
+      padding: calc(var(--base-padding) / 4) calc(var(--base-padding) / 2);
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--base-padding);
+    }
+    .options label {
+      display: flex;
+      align-items: center;
+    }
+    .notification {
+      border: solid 1px #ccc;
+      border-radius: var(--base-padding);
+      padding: var(--base-padding);
+      margin:  var(--base-padding);
+      justify-content: center;
+    }
+    #status {
+      font-size: 1.2em;
+      color: green;
+    }
+    #refreshSection {
+      display: none;
+    }
+  </style>
+  <script src="options.js" defer></script>
+</head>
+<body>
+  <div class="row space-for-close-button">
+    <img class="logo" src="extension-icons/icon-64.png" alt="Codeless Love Icon" />
+    <h1>Bubble Editor Powerup</h1>
+  </div>
+  <button class="button-close" id="close-button" aria-label="Close">&times;</button>
+  </div>
+  <p>Please select the features that you want to enable:</p>
+  <div class="column">
+    <label>
+      <input type="checkbox" id="opt-expression-bad-practice-warning" />
+      Expression Bad Practice Warning
+    </label>
+    <label>
+      <input type="checkbox" id="opt-style-row-hover" />
+      Style Row Hover
+    </label>
+  </div>
+  <div class="notification column" id="refreshSection">
+    <div id="status"></div>
+    <div class="row justify-center">
+      <button id="refresh-button" class="button-secondary">Reload this tab</button>
+      <button id="refresh-all-button" class="button-secondary">Reload all Bubble editor tabs</button>
+    </div>
+  </div>
+  <button id="save-button" class="top-margin">Save</button>
+</body>
+</html>

@@ -28,6 +28,10 @@ https://www.loom.com/share/051e57b9fcab471eae7910ab8f4dc4eb?sid=74f25d0e-f57c-46
 ### Making Your First Pull Request
 https://www.loom.com/share/01368973bccf4f6f9336aa654360703a?sid=8417e388-0d0c-402c-a210-a61fd9382872
 
+## How to add new features in the codebase
+1. Create a new folder under **features/** for your new feature.
+2. Add its cssFile and jsFile references to `featuresConfig` in **background.js** (with a unique key).
+3. Create a new checkbox in **options.html**, referencing the same key -- but like `opt-some-new-feature`.
 
 ## How to Install from Source
 If you don't want to use the Chrome Web Store, you may install this extension to
