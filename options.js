@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const refreshAllButton = document.getElementById("refresh-all-button");
 
     // close popup
-    const closePopup = () => {
+    const closePopup = (delay = 0) => {
       setTimeout(() => {
         if (refreshSection) {
           refreshSection.style.display = "none";
         }
         window.close();
-      }, 500);
+      }, delay);
     };
 
     // Retrieve existing preferences or use defaults
@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
     // Reload tab
-    refreshAllButton.addEventListener("click", async () => {
+    refreshButton.addEventListener("click", async () => {
       chrome.tabs.reload();
-      closePopup();
+      closePopup(500);
     });
     // Reload all Bubble.io tabs
     refreshAllButton.addEventListener("click", async () => {
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         });
       });
-      closePopup();
+      closePopup(500);
     });
 
     // click close button
