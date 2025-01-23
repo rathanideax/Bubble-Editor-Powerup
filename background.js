@@ -10,12 +10,12 @@ const featuresConfig = [
       cssFile: "features/style-row-hover/style-row-hover.css"
     }
   ];
-  
+
   // Injects any enabled features on the specified tab.
   async function injectFeatures(tabId) {
     // Retrieves all stored preferences; if a key doesn't exist, we'll treat it as ON.
     const prefs = await chrome.storage.sync.get(null);
-  
+
     for (const feature of featuresConfig) {
       // If the stored value is strictly false, the feature is OFF -- otherwise it's ON.
       const isEnabled = prefs[feature.key] !== false;
@@ -35,11 +35,10 @@ const featuresConfig = [
       }
     }
   }
-  
+
   // Detects when a tab in Bubble’s editor has fully loaded, then injects features.
   chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === "complete" && tab.url && tab.url.includes("bubble.io/page")) {
       injectFeatures(tabId);
     }
   });
-  
