@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
     // Default preferences in case nothing is saved yet
     const defaults = {
-      feature_expression_bad_practice_warning_enabled: true,
-      feature_style_row_hover_enabled: true,
+      feature_expression_bad_practice_warning: true,
+      feature_style_row_hover: true,
       feature_canvas_left_align_canvas: true,
       feature_data_optionsets_expand_inputs: true,
       feature_data_optionsets_move_gaps: true,
@@ -31,10 +31,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // Set the checkboxes according to the stored or default preferences
-    document.getElementById("expression-bad-practice-warning").checked = prefs.feature_expression_bad_practice_warning_enabled;
-    document.getElementById("style-row-hover").checked = prefs.feature_style_row_hover_enabled;
-    document.getElementById("expression-bad-practice-warning").checked = prefs.feature_expression_bad_practice_warning_enabled;
-    document.getElementById("style-row-hover").checked = prefs.feature_style_row_hover_enabled;
+    document.getElementById("expression-bad-practice-warning").checked = prefs.feature_expression_bad_practice_warning;
+    document.getElementById("style-row-hover").checked = prefs.feature_style_row_hover;
     document.getElementById("canvas-left-align-canvas").checked = prefs.feature_canvas_left_align_canvas;
     document.getElementById("data-optionsets-expand-inputs").checked = prefs.feature_data_optionsets_expand_inputs;
     document.getElementById("data-optionsets-move-gaps").checked = prefs.feature_data_optionsets_move_gaps;
@@ -46,8 +44,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Save button updates preferences in chrome.storage.sync
     document.getElementById("save-button").addEventListener("click", async () => {
       const newPrefs = {
-        feature_expression_bad_practice_warning_enabled: document.getElementById("expression-bad-practice-warning").checked,
-        feature_style_row_hover_enabled: document.getElementById("style-row-hover").checked,
+        feature_expression_bad_practice_warning: document.getElementById("expression-bad-practice-warning").checked,
+        feature_style_row_hover: document.getElementById("style-row-hover").checked,
         feature_canvas_left_align_canvas: document.getElementById("canvas-left-align-canvas").checked,
         feature_data_optionsets_expand_inputs: document.getElementById("data-optionsets-expand-inputs").checked,
         feature_data_optionsets_move_gaps: document.getElementById("data-optionsets-move-gaps").checked,
