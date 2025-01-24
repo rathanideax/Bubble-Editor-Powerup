@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Reload tab
   refreshButton.addEventListener("click", async () => {
     chrome.tabs.reload();
-    closePopup(500);
+    closePopup(1500);
   });
   // Reload all Bubble.io tabs
   refreshAllButton.addEventListener("click", async () => {
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     });
-    closePopup(500);
+    closePopup(1500);
   });
 
   // click close button
