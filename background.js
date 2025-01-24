@@ -4,17 +4,23 @@ async function loadFeatures() {
   return response.json();
 }
 
+// Store injected features by tabId
+const injectedFeatures = new Map();
+
 // Injects enabled features on the specified tab.
 async function injectFeatures(tabId) {
   const featuresConfig = await loadFeatures();
-  // Retrieves all stored preferences; if a key doesn't exist, we'll treat it as ON.
   const prefs = await chrome.storage.sync.get(null);
 
+  // Check if we already injected features for this tab
+  if (!injectedFeatures.has(tabId)) {
+    injectedFeatures.set(tabId, new Set());
+  }
+  const tabFeatures = injectedFeatures.get(tabId);
   for (const feature of featuresConfig) {
-    // If the stored value is strictly false, the feature is OFF -- otherwise it's ON.
-    const isEnabled = prefs[feature.key] !== false;;
-    console.log(feature.key, isEnabled);
-    if (isEnabled) {
+    const isEnabled = prefs[feature.key] !== false;
+
+    if (isEnabled && !tabFeatures.has(feature.key)) {
       if (feature.cssFile) {
         await chrome.scripting.insertCSS({
           target: { tabId },
@@ -27,9 +33,12 @@ async function injectFeatures(tabId) {
           files: [feature.jsFile]
         });
       }
+      // Mark this feature as injected
+      tabFeatures.add(feature.key);
     }
   }
 }
+
 // When a tab in Bubble’s editor has fully loaded, inject features.
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && tab.url && tab.url.includes("bubble.io/page")) {
