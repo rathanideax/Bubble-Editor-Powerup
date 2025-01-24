@@ -12,12 +12,19 @@ async function injectFeatures(tabId) {
   const featuresConfig = await loadFeatures();
   const prefs = await chrome.storage.sync.get(null);
 
-  // Check if we already injected features for this tab
+  // Remove duplicates from featuresConfig
+  const uniqueFeaturesConfig = Array.from(new Set(featuresConfig.map(f => f.key)))
+    .map(key => featuresConfig.find(f => f.key === key));
+
+  // Initialize a new tracking reckord for this tab (if we haven't already)
   if (!injectedFeatures.has(tabId)) {
     injectedFeatures.set(tabId, new Set());
+  } else {
+    console.error("Tried to inject features more than once on the same tab.");
   }
+  
   const tabFeatures = injectedFeatures.get(tabId);
-  for (const feature of featuresConfig) {
+  for (const feature of uniqueFeaturesConfig) {
     const isEnabled = prefs[feature.key] !== false;
 
     if (isEnabled && !tabFeatures.has(feature.key)) {
