@@ -1,4 +1,5 @@
-// Waits for a specific element to exist in the DOM
+console.log("Sidebar Link");
+
 function waitForElement(selector, callback, timeout = 5000) {
   const startTime = Date.now();
   const observer = new MutationObserver(() => {
@@ -15,38 +16,82 @@ function waitForElement(selector, callback, timeout = 5000) {
   observer.observe(document.body, { childList: true, subtree: true });
 }
 
-// Wait for the "Plugins" button to exist
+// Wait for the Plugins button to exist and then create the new element
 waitForElement('button[data-tab-item="Plugins"]', (pluginsButton) => {
   console.log("Plugins button found:", pluginsButton);
 
-  // Create a new button element
+  // Create a new <span> element
+  const newSpan = document.createElement('span');
+  newSpan.className = '_1ox6jxm6';
+
+  // Create the new button
   const newButton = document.createElement('button');
-  newButton.className = 'up8wd41'; // Add the same class for styling consistency
-  newButton.ariaLabel = 'API Connector'; // Set a meaningful aria-label
-  newButton.dataset.tabItem = 'apiconnector'; // Unique data-tab-item
-  newButton.id = 'newButton'; // Add an ID for easier targeting
+  newButton.className = 'up8wd41'; // Use the same class for styling
+  newButton.ariaLabel = 'API Connector'; // Accessible label
+  newButton.dataset.tabItem = 'API Connector';
+
+  // Add inner content, including the custom SVG for "API"
   newButton.innerHTML = `
     <span class="up8wd45">
       <span class="py18712 py1871m">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="py1871p">
-          <path d="M16 3C9.27125 3 4 6.075 4 10V22C4 25.925 9.27125 29 16 29C22.7288 29 28 25.925 28 22V10C28 6.075 22.7288 3 16 3Z" fill="currentColor"></path>
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="14" fill="currentColor" font-family="Arial, sans-serif">
+            API
+          </text>
         </svg>
       </span>
     </span>
-    API Connector
   `;
 
-  // Add a click event listener to the new button
-  newButton.addEventListener('click', () => {
-    const params = new URLSearchParams(window.location.search);
-    params.set('❤️plugin', 'apiconnector2'); // Add or update the parameter
-    const newUrl = `${window.location.pathname}?${params.toString()}`;
+  // Go to API Connector when it's clicked
+  // -------------------------------------
+  // Preserve the following parameters with whatever they currently have:
+  //  * id
+  //  * name
+  //
+  // Update or add the following parameters to match this
+  //  * tab=Plugins
+  //  * type=custom
+  //  * ❤️plugin=apiconnector2
+  //
+  // Remove all other parameters.
+  //
+  newSpan.addEventListener('click', () => {
+    const currentParams = new URLSearchParams(window.location.search);
+
+    // Preserve the 'id' and 'name' parameters
+    const preservedParams = {};
+    if (currentParams.has('id')) {
+      preservedParams.id = currentParams.get('id');
+    }
+    if (currentParams.has('name')) {
+      preservedParams.name = currentParams.get('name');
+    }
+
+    // Update or add the specified parameters
+    const updatedParams = {
+      ...preservedParams, // Include preserved parameters
+      tab: 'Plugins',
+      type: 'custom',
+      '❤️plugin': 'apiconnector2', // Add the custom plugin parameter
+    };
+
+    // Build the new URLSearchParams with only the required parameters
+    const newParams = new URLSearchParams(updatedParams);
+
+    // Construct the new URL and update the history
+    const newUrl = `${window.location.pathname}?${newParams.toString()}`;
     history.pushState(null, '', newUrl); // Update the URL without reloading
-    console.log("API Connector parameter added to URL.");
+    // Trigger a popstate event so Bubble actually sees this happens
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    console.log("Updated URL:", newUrl);
   });
 
-  // Insert the new button after the "Plugins" button
-  pluginsButton.parentElement.insertBefore(newButton, pluginsButton.nextSibling);
+  // Append the button to the new span
+  newSpan.appendChild(newButton);
+
+  // Insert the new span element after the "Plugins" button's parent
+  pluginsButton.parentElement.parentElement.insertBefore(newSpan, pluginsButton.parentElement.nextSibling);
 });
 
 // Parse the URL parameters
