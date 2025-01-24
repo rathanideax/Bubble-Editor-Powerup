@@ -65,27 +65,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // features.forEach((feature) => {
-  //   const div = document.createElement("div");
-  //   div.className = "feature";
-  //
-  //   const checkbox = document.createElement("input");
-  //   checkbox.type = "checkbox";
-  //   checkbox.checked = prefs[feature.key];
-  //   checkbox.id = feature.key;
-  //
-  //   const label = document.createElement("label");
-  //   label.append(checkbox, feature.name);
-  //
-  //   div.appendChild(label);
-  //
-  //   const description = document.createElement("p");
-  //   description.textContent = feature.description;
-  //   div.appendChild(description);
-  //
-  //   container.appendChild(div);
-  // });
-
   const notificationStatus = document.getElementById("status");
   const refreshSection = document.getElementById("refreshSection");
   const refreshButton = document.getElementById("refresh-button");
