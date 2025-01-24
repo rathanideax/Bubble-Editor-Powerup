@@ -2,7 +2,7 @@
   {
     "key": "expression_bad_practice_warning",
     "category": "Expressions",
-    "name": " Bad Practice Warning",
+    "name": "Bad Practice Warning",
     "description": "Highlights bad practices in expressions and provides a link to documentation explaining best practices.",
     "cssFile": "features/expression-bad-practice-warning/expression-bad-practice-warning.css",
     "jsFile": "features/expression-bad-practice-warning/expression-bad-practice-warning.js",

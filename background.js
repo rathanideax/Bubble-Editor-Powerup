@@ -29,29 +29,27 @@ async function injectFeatures(tabId) {
   // Initialize a new tracking record for this tab (if we haven't already)
   if (!injectedFeatures.has(tabId)) {
     injectedFeatures.set(tabId, new Set());
-  } else {
-    console.error("Tried to inject features more than once on the same tab.");
-  }
+    const tabFeatures = injectedFeatures.get(tabId);
+    for (const feature of uniqueFeaturesConfig) {
+      const isEnabled = prefs[feature.key] !== false;
 
-  const tabFeatures = injectedFeatures.get(tabId);
-  for (const feature of uniqueFeaturesConfig) {
-    const isEnabled = prefs[feature.key] !== false;
-
-    if (isEnabled && !tabFeatures.has(feature.key)) {
-      if (feature.cssFile) {
-        await chrome.scripting.insertCSS({
-          target: { tabId },
-          files: [feature.cssFile]
-        });
+      if (isEnabled && !tabFeatures.has(feature.key)) {
+        console.log("Injecting " + feature.name);
+        if (feature.cssFile) {
+          await chrome.scripting.insertCSS({
+            target: { tabId },
+            files: [feature.cssFile]
+          });
+        }
+        if (feature.jsFile) {
+          await chrome.scripting.executeScript({
+            target: { tabId },
+            files: [feature.jsFile]
+          });
+        }
+        // Mark this feature as injected
+        tabFeatures.add(feature.key);
       }
-      if (feature.jsFile) {
-        await chrome.scripting.executeScript({
-          target: { tabId },
-          files: [feature.jsFile]
-        });
-      }
-      // Mark this feature as injected
-      tabFeatures.add(feature.key);
     }
   }
   loadingTabs.delete(tabId); // Mark tab as no longer loading
