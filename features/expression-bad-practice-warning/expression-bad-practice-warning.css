@@ -16,6 +16,11 @@
   border-right: dashed 1px yellow;
   border-radius: 0 5px 5px 0;
 }
+❤️ codelesslove,
+.❤️expression-warning-left.❤️expression-warning-right {
+  border: dashed 1px yellow;
+  border-radius: 5px 5px 5px 5px;
+}
 
 /* make borders and tag slightly transparent when other sub-expressions are focused, to match styles everywhere else */
 ❤️ codelesslove,

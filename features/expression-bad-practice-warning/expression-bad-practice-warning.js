@@ -2,6 +2,43 @@ console.log("Codeless Love plugin running.");
 let debounceTimeout;
 let isProcessing = false; // Flag to prevent redundant processing
 
+
+// Outline and add a warning to detected bad practices
+function addWarning(nodes, warningTagNode, practiceName, practiceURL, warningText) {
+  if (!Array.isArray(nodes) || nodes.length === 0) return;
+
+  // Iterate through the list of nodes to add dashed outline classes
+  nodes.forEach((node, index) => {
+    if (!node) return; // Skip null or undefined nodes
+
+    // Add the general warning class to all
+    node.classList.add('❤️expression-warning');
+
+    // Add specific classes for the first/last nodes. if there's only one node, add both classes
+    if (index === 0) {
+      node.classList.add('❤️expression-warning-left');
+    }
+    if (index === nodes.length - 1) {
+      node.classList.add('❤️expression-warning-right');
+    }
+  });
+
+  // Add the warning tag to the specified node
+  if (!warningTagNode.querySelector('.❤️expression-warning-tag')) {
+    const warningDiv = document.createElement('div');
+    warningDiv.textContent = warningText;
+    warningDiv.className = '❤️expression-warning-tag';
+    if(practiceURL){
+      warningDiv.dataset.codelessLovePractice = practiceURL;
+      warningDiv.setAttribute(
+        'onpointerdown',
+        `event.preventDefault(); window.open("${practiceURL}", "_blank");`
+      );
+    }
+    warningTagNode.appendChild(warningDiv);
+  }
+}
+
 // Function to detect bad practices
 function detectBadPractices() {
   if (isProcessing) return; // If already processing, do nothing
@@ -15,36 +52,49 @@ function detectBadPractices() {
     const dynamicSpans = container.querySelectorAll('span.dynamic');
 
     // Iterate through the spans to check for the specific pattern
-    for (let i = 0; i < dynamicSpans.length - 3; i++) {
-      const searchItem = dynamicSpans[i];
-      const countItem = dynamicSpans[i+1];
-      const comparisonItem = dynamicSpans[i + 2];
-      const zeroItem = dynamicSpans[i + 3];
-      const practiceURL = "https://codeless.love/practice?practice=determine-if-a-list-is-empty";
+    for (let i = 0; i < dynamicSpans.length; i++) {
+      const url = new URL(window.location.href);
+      const firstItem  = dynamicSpans[i];
+      const secondItem = dynamicSpans[i + 1] ?? null;//if we're near the end of the list, these may not exist, so avoid an error by passing null if it isn't there.
+      const thirdItem  = dynamicSpans[i + 2] ?? null;
+      const fourthItem = dynamicSpans[i + 3] ?? null;
+      //console.log(firstItem.textContent);
+
+      // BAD PRACTICE: :count is 0
+      const searchItem = firstItem;
+      const countItem = secondItem;
+      const comparisonItem = thirdItem;
+      const zeroItem = fourthItem;
       const validOperators = ['is', 'is not', '>', '<', '≤', '≥'];
 
-      if (searchItem.textContent.match("Search for") && countItem.textContent.trim() === ':count' && validOperators.includes(comparisonItem.textContent.trim()) && zeroItem.textContent.trim() === '0') {
+      if (
+        searchItem?.textContent.match("Search for") &&
+        countItem?.textContent.trim() === ':count' &&
+        validOperators?.includes(comparisonItem.textContent.trim()) &&
+        zeroItem?.textContent.trim() === '0'
+      ) {
         console.log('Bad practice detected: ":count is 0"');
+        addWarning(
+          [searchItem, countItem, comparisonItem, zeroItem],
+          zeroItem,
+          ":count is 0",
+          "https://codeless.love/practice?practice=determine-if-a-list-is-empty",
+          "Bad Practice"
+        );
+      }
 
-        // Add custom classes to highlight the issue
-        searchItem.classList.add('❤️expression-warning', '❤️expression-warning-left');
-        countItem.classList.add('❤️expression-warning');
-        comparisonItem.classList.add('❤️expression-warning');
-        zeroItem.classList.add('❤️expression-warning', '❤️expression-warning-right');
-
-        // Check if the added node already has an expression-warning-tag
-        if (!zeroItem.querySelector('.❤️expression-warning-tag')) {
-          // Create warning DIV
-          const warningDiv = document.createElement('div');
-          warningDiv.textContent = "Bad practice";
-          warningDiv.className = '❤️expression-warning-tag';
-          warningDiv.dataset.codelessLovePractice = practiceURL;
-          warningDiv.setAttribute(
-            'onpointerdown',
-            `event.preventDefault(); window.open("${practiceURL}", "_blank");`
-          );
-          zeroItem.appendChild(warningDiv);
-        }
+      //WARNING PRACTICE: Current User in BackendWorkflows
+      if (
+        firstItem.textContent.includes("Current User") &&
+        url.searchParams.get('tab') === 'BackendWorkflows'
+      ) {
+        console.log('Warning: "Current user in Backend workflows tab"');
+        addWarning([firstItem],
+          firstItem,
+          "Current User used in Backend",
+          null,
+          "Warning"
+        );
       }
     }
   });
