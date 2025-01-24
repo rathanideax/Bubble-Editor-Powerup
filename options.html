@@ -10,10 +10,9 @@
     }
     body {
       width: 450px;
-      margin: var(--base-padding);
-      padding: 0 var(--base-padding) var(--base-padding) var(--base-padding);
+      margin: 0;
       position: relative;
-      background-color: transparent;
+      background-color: #fff;
     }
     body.full-page {
         margin: auto;
@@ -21,6 +20,24 @@
         border-radius: var(--base-padding);
         var(--base-padding) var(--base-padding) calc(var(--base-padding)*3) -var(--base-padding) #000000DD;
         margin-top: calc(var(--base-padding)*2);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      padding: var(--base-padding);
+      background-color: #fff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for visibility */
+    }
+    main {
+      margin: var(--base-padding);
+      padding: 0 var(--base-padding) var(--base-padding) var(--base-padding);
+    }
+    footer {
+      position: sticky;
+      bottom: 0;
+      padding: var(--base-padding);
+      background-color: #fff;
+      box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for visibility */
     }
     h1 {
       margin: 0;
@@ -39,6 +56,9 @@
     }
     .justify-center {
       justify-content: center;
+    }
+    .fill-available {
+      width: -webkit-fill-available;
     }
     .space-for-close-button {
        padding-right: calc(var(--close-button-width) + var(--base-padding) + var(--base-padding))
@@ -75,20 +95,19 @@
       flex-direction: column;
       gap: var(--base-padding);
     }
-    .options label {
+    .feature label {
       display: flex;
       align-items: center;
     }
-    .notification {
-      border: solid 1px #ccc;
-      border-radius: var(--base-padding);
-      padding: var(--base-padding);
-      margin:  var(--base-padding);
-      justify-content: center;
+    .feature p {
+      margin-left: 20px;
+      color: #888;
     }
     #status {
+      display: none;
       font-size: 1.2em;
       color: green;
+      margin-bottom: 10px;
     }
     #refreshSection {
       display: none;
@@ -97,58 +116,26 @@
   <script src="options.js" defer></script>
 </head>
 <body>
-  <div class="row space-for-close-button">
-    <img class="logo" src="extension-icons/icon-64.png" alt="Codeless Love Icon" />
-    <h1>Bubble Editor Powerup</h1>
-  </div>
-  <button class="button-close" id="close-button" aria-label="Close">&times;</button>
-  </div>
-  <p>Please select the features that you want to enable:</p>
-  <div class="column">
-    <label>
-      <input type="checkbox" id="expression-bad-practice-warning" />
-      Expression Bad Practice Warning
-    </label>
-    <label>
-      <input type="checkbox" id="style-row-hover" />
-      Style Row Hover
-    </label>
-    <label>
-      <input type="checkbox" id="canvas-left-align-canvas" />
-      canvas-left-align-canvas
-    </label>
-    <label>
-      <input type="checkbox" id="data-optionsets-expand-inputs" />
-      data-optionsets-expand-inputs
-    </label>
-    <label>
-      <input type="checkbox" id="data-optionsets-move-gaps" />
-      data-optionsets-move-gaps
-    </label>
-    <label>
-      <input type="checkbox" id="property-editor-expression-composer-hitboxes" />
-      property-editor-expression-composer-hitboxes
-    </label>
-    <label>
-      <input type="checkbox" id="property-editor-expression-composer-multiline" />
-      property-editor-expression-composer-multiline
-    </label>
-    <label>
-      <input type="checkbox" id="property-editor-expression-composers-full-width" />
-      property-editor-expression-composers-full-width
-    </label>
-    <label>
-      <input type="checkbox" id="workflow-editor-folder-pop" />
-      workflow-editor-folder-pop
-    </label>
-  </div>
-  <div class="notification column" id="refreshSection">
-    <div id="status"></div>
-    <div class="row justify-center">
-      <button id="refresh-button" class="button-secondary">Reload this tab</button>
-      <button id="refresh-all-button" class="button-secondary">Reload all Bubble editor tabs</button>
+  <header class="sticky">
+    <div class="row space-for-close-button">
+      <img class="logo" src="extension-icons/icon-64.png" alt="Codeless Love Icon" />
+      <h1>Bubble Editor Powerup</h1>
     </div>
-  </div>
-  <button id="save-button" class="top-margin">Save</button>
+    <button class="button-close" id="close-button" aria-label="Close">&times;</button>
+  </header>
+  <main>
+    <p>Please select the features that you want to enable:</p>
+    <div id="features-list"></div>
+  </main>
+  <footer>
+    <div id="status"></div>
+    <div class="row">
+      <button id="save-button">Save</button>
+      <div class="row justify-center fill-available" id="refreshSection">
+        <button id="refresh-button" class="button-secondary">Reload this tab</button>
+        <button id="refresh-all-button" class="button-secondary">Reload all Bubble editor tabs</button>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
