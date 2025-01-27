@@ -1,0 +1,84 @@
+[
+  {
+    "key": "expression_bad_practice_warning",
+    "category": "Expressions",
+    "name": "Bad Practice Warning",
+    "description": "Highlights bad practices in expressions and provides a link to documentation explaining best practices.",
+    "cssFile": "features/expression-bad-practice-warning/expression-bad-practice-warning.css",
+    "jsFile": "features/expression-bad-practice-warning/expression-bad-practice-warning.js",
+    "default": true
+  },
+  {
+    "key": "style_row_hover",
+    "category": "Style Tab",
+    "name": "Hi-light style variable rows on hover",
+    "description": "When hovering over font and color variables, change the background of that row to a darker color so you can tell what row you are hovering.",
+    "cssFile": "features/style-row-hover/style-row-hover.css",
+    "default": true
+  },
+  {
+    "key": "canvas_left_align_canvas",
+    "category": "Design Canvas",
+    "name": "Left Align the Design Canvas",
+    "description": "Left aligns the content of your page in the editor to free up space on the right-hand side for Property Editors and other menus.",
+    "cssFile": "features/canvas-left-align-canvas/canvas-left-align-canvas.css",
+    "default": true
+  },
+  {
+    "key": "data_optionsets_expand_inputs",
+    "category": "Option Set Tab",
+    "name": "Maximum Sized Option Set Inputs",
+    "description": "On the option set tab of the Data view, Stretch Option Set inputs to be as wide as possible for your screen so that content is not cut off.",
+    "cssFile": "features/data-optionsets-expand-inputs/data-optionsets-expand-inputs.css",
+    "default": true
+  },
+  {
+    "key": "data_optionsets_move_gaps",
+    "category": "Option Set Tab",
+    "name": "Option Set Move Gaps",
+    "description": "On the option set tab of the Data view, add a gap to the top item where 'move up' normally is, so that everything else is in line. Do the same at the bottom for 'move down'.",
+    "cssFile": "features/data-optionsets-move-gaps/data-optionsets-move-gaps.css",
+    "default": true
+  },
+  {
+    "key": "property_editor_expression_composer_hitboxes",
+    "category": "Expression Composers",
+    "name": "Increase Text Hitbox Size in Expression Composers",
+    "description": "In expression composers which have static text (nondynamic), make the clickable area for the text as big as it can be, so you can easily click it.",
+    "cssFile": "features/property-editor-expression-composer-hitboxes/property-editor-expression-composer-hitboxes.css",
+    "default": true
+  },
+  {
+    "key": "property_editor_expression_composer_multiline",
+    "category": "Expressions",
+    "name": "Multiline Expressions",
+    "description": "Make expressions multiple lines, indented, and collapsible.",
+    "cssFile": "features/property-editor-expression-composer-multiline/property-editor-expression-composer-multiline.css",
+    "default": true
+  },
+  {
+    "key": "property_editor_expression_composers_full_width",
+    "category": "Expression Composers",
+    "name": "Full Width Expression Composers",
+    "description": "Make the composer box for expressions full width in places where it isn't already (e.g. element condition tab) to let you see more of the expression at once without wrapping.",
+    "cssFile": "features/property-editor-expression-composers-full-width/property-editor-expression-composers-full-width.css",
+    "default": true
+  },
+  {
+    "key": "workflow_editor_folder_pop",
+    "category": "Workflow View",
+    "name": "Increase Workflow Folder Visibility",
+    "description": "In the Workflow editor, make the folder text bold and background have a darker grey, and create a shadow inside it, to distinguish from non-folders.",
+    "cssFile": "features/workflow-editor-folder-pop/workflow-editor-folder-pop.css",
+    "default": true
+  },
+  {
+    "key": "sidebar_link_api_connector",
+    "category": "Sidebar",
+    "name": "Add API Connector link to sidebar",
+    "description": "Adds a link to the sidebar which will take you directly to the API Connector plugin.",
+    "cssFile": "features/sidebar-link-api-connector/sidebar-link-api-connector.css",
+    "jsFile": "features/sidebar-link-api-connector/sidebar-link-api-connector.js",
+    "default": true
+  }
+]

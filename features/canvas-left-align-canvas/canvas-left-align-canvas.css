@@ -1,0 +1,41 @@
+/* ❤️ */
+/* Design - Make the design canvas left align. */
+❤️ codelesslove, /* Add top/left padding */
+#mainwindow .tabcanvas.tabs-1 .designcanvas.resp-v1.reusable-editor .canvas-inner-reusable,
+#mainwindow .tabcanvas.tabs-1 .designcanvas.resp-v1 .canvas-inner {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+❤️ codelesslove, /* Remove weirdly duplicated padding */
+#mainwindow .tabcanvas.tabs-1 .resp-v1 {
+  padding-top: 0; /*Bubble somehow finds the value of .canvas-inner and .canvas-inner-reusable, and duplicates it to this element. Zeroing this out makes sense, or also we could have made the top value half (and let it double) */
+}
+
+❤️ codelesslove, /* Left align the element */
+#mainwindow .canvas.resp-v1 > .canvas-inner,
+#mainwindow .designcanvas > .canvas-inner,
+#mainwindow .canvas.resp-v1 > .canvas-inner-reusable,
+#mainwindow .designcanvas > .canvas-inner-reusable {
+    justify-self: left !important;
+}
+/* Heart indicator on the right-hand side */
+❤️ codelesslove, /* Set up the space for the heart to fill the remaining space */
+#mainwindow .tabcanvas.tabs-1 .canvas.resp-v1,
+#mainwindow .tabcanvas.tabs-1 .designcanvas.resp-v1 {
+  grid-template-areas: "content after";
+  grid-template-columns: max-content 1fr;
+}
+❤️ codelesslove, /* Insert the heart */
+#mainwindow .canvas.resp-v1::after,
+#mainwindow .designcanvas::after {
+    content: "❤️";
+    grid-area: after;
+    font-size: 10px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-right: -5px;
+    margin-left: -5px;
+    position: relative;
+    top: calc(50vh - 84px); /* half of the screen plus the top bar and the top padding*/
+}
